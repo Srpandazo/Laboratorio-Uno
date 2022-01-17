@@ -1,0 +1,39 @@
+<h1>
+  Buscando: <small> {{ termino }}</small>
+</h1>
+<hr />
+
+<div class="row" *ngIf="videojuegos.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No existen resultados con el término {{ termino }}
+    </div>
+  </div>
+</div>
+
+<div class="card-columns mb-3">
+  <div
+    class="card animated fadeIn fast"
+    *ngFor="let videojuego of videojuegos; let i = index"
+  >
+    <img
+      class="card-img-top"
+      [src]="videojuego.img"
+      [alt]="videojuego.nombre"
+    />
+    <div class="card-body">
+      <h4 class="card-title">{{ videojuego.nombre }}</h4>
+      <p class="card-text">{{ videojuego.descripcion }}</p>
+      <p class="card-text">
+        <small class="text-muted">{{ videojuego.lanzamiento }}</small>
+      </p>
+      <button
+        (click)="verVideojuego(i)"
+        type="button"
+        class="btn btn-outline-primary btn-block"
+      >
+        Ver más...
+      </button>
+    </div>
+  </div>
+</div>
